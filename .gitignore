@@ -1,0 +1,31 @@
+# Environment variables — never push these
+.env
+
+# Python-generated files
+__pycache__/
+*.py[oc]
+*.pyd
+.pytest_cache/
+
+# Virtual environment
+venv/
+.venv/
+env/
+.venv
+
+# Database
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Distribution
+dist/
+build/
+wheels/
+*.egg-info/
