@@ -12,8 +12,8 @@ from main import app
 USERS = [
     {
         "username": "VinayDuggi",
-        "email": "duggi.vinnu@gmail.com",
-        "password": "TestPassword1!"
+        "email": "duggi.compbio@gmail.com",
+        "password": "TestPassword1!",
     },
     {
         "username": "DefaultDude",
@@ -225,9 +225,11 @@ POST_44 = {
 
 
 async def clear_existing_data() -> None:
+    # Delete profile pictures from local storage
 
     # Clear database tables (order respects foreign keys)
     async with AsyncSessionLocal() as db:
+        await db.execute(delete(models.PasswordResetToken))
         await db.execute(delete(models.Post))
         await db.execute(delete(models.User))
         await db.commit()
@@ -273,7 +275,7 @@ async def populate() -> None:
         transport=transport,
         base_url="http://localhost",
     ) as client:
-        # Clear existing data ( database)
+        # Clear existing data (local images first, then database)
         await clear_existing_data()
 
         users: list[dict] = []
