@@ -41,6 +41,8 @@ class Post(Base):
         DateTime(timezone=True),
         default=lambda: datetime.now(UTC),
     )
+    ## Likes Field
+    likes: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
 
     author: Mapped[User] = relationship(back_populates="posts")
 
